@@ -1,0 +1,37 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+
+<h:head>
+    CRUD USER Demo
+</h:head>
+
+<h:body>
+    <h:form>
+        <p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" />
+
+        <p:panelGrid columns="2">
+            <p:outputLabel for="name" value="Full Name:" />
+            <p:inputText id="name" value="#{UserMB.user.name}" />
+            <p:outputLabel for="userName" value="Login name:" />
+            <p:inputText id="userName" value="#{UserMB.user.userName}" />
+            <p:outputLabel for="password" value="Password:" />
+            <p:inputText id="password" value="#{UserMB.user.password}" />
+            <p:commandButton value="Save"   action="#{UserMB.insert}" ajax="false">
+            </p:commandButton>
+        </p:panelGrid>
+        <br/><br/>
+        <p:panelGrid columns="1">
+            <p:commandButton value="Back"   action="/index" ajax="false"/>
+        </p:panelGrid>
+
+
+
+
+    </h:form>
+</h:body>
+
+
+</html>

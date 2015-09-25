@@ -1,0 +1,71 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+    CRUD USER Demo
+
+
+</h:head>
+
+<h:body>
+    <h:form id="userForm">
+
+        <p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" />
+
+
+        <p:panelGrid columns="2">
+            <p:outputLabel for="name" value="Full Name:" />
+            <p:inputText id="name" value="#{UserMB.user.name}" />
+
+            <p:outputLabel for="userName" value="Login name:" />
+            <p:inputText id="userName" value="#{UserMB.user.userName}" />
+
+            <p:commandButton value="Insert" action="/insert" ajax="false"/>
+            <p:commandButton value="Search" action="#{UserMB.search}" ajax="false"/>
+
+        </p:panelGrid>
+
+        <br/><br/>  <br/><br/>
+
+        <p:dataTable value="#{UserMB.users}" var="user" id="table" >
+            <p:column>
+
+                <f:facet name="header">
+                    <h:outputText value="Full Name"/>
+                </f:facet>
+                <h:outputText value="#{user.name}" />
+            </p:column>
+
+            <p:column>
+                <f:facet name="header">
+                    <h:outputText value="Login Name" />
+                </f:facet>
+                <h:outputText value="#{user.userName}" />
+            </p:column>
+
+            <p:column>
+                <f:facet name="header">
+                    <h:outputText value="Dt Last Update" />
+                </f:facet>
+                <h:outputText value="#{user.lastAccess}" >	<f:convertDateTime pattern="dd-MM-yyyy" /></h:outputText>
+            </p:column>
+            <p:column>
+
+                <f:facet name="header">Actions</f:facet>
+
+                <p:commandLink value="Update  "  action="#{UserMB.setUpdate(user)}" />
+                <p:commandLink value="Delete"    action="#{UserMB.delete(user.id)}"  update="table"  />
+
+            </p:column>
+        </p:dataTable>
+
+
+
+
+</h:form>
+</h:body>
+
+
+</html>
